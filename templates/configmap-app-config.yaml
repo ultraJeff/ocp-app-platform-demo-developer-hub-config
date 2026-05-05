@@ -123,6 +123,15 @@ data:
               username: admin
               password: ${ARGOCD_PASSWORD}
 
+    proxy:
+      endpoints:
+        '/jira/api':
+          target: http://jira-stub.rhdh.svc.cluster.local:8080
+          headers:
+            Accept: application/json
+            Content-Type: application/json
+            X-Atlassian-Token: nocheck
+
     kubernetes:
       serviceLocatorMethod:
         type: multiTenant
