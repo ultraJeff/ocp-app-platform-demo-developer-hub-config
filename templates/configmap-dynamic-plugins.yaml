@@ -279,7 +279,8 @@ data:
                         gridColumnEnd: span 4
       
       # Jira plugin (backend data source for Scorecards)
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.42.5_1.0.1!red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira
+      # - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.42.5_1.0.1!red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.45.3__2.3.5
         disabled: false
 
       {{- if .Values.devMode }}
