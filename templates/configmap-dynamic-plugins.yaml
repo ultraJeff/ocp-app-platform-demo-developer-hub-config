@@ -253,7 +253,7 @@ data:
                     importName: EntityScorecardContent
                     config:
                       layout:
-                        gridColumn: 1 / -1
+                        gridColumnEnd: span 4
                     if:
                       allOf:
                         - isKind: component
