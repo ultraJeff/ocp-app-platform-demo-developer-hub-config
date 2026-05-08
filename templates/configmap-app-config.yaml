@@ -113,6 +113,11 @@ data:
           - "'unsafe-eval'"
           - https://cdn.jsdelivr.net
 
+    techdocs:
+      builder: local
+      generator:
+        runIn: local
+
     integrations:
       gitlab:
         - apiBaseUrl: https://{{ .Values.gitlab.host }}/api/v4
