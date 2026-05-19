@@ -123,6 +123,29 @@ data:
               username: admin
               password: ${ARGOCD_PASSWORD}
 
+    jira:
+      proxyPath: /jira/api
+      product: datacenter
+
+    quay:
+      uiUrl: https://quay.{{ .Values.cluster.subdomain }}
+
+    proxy:
+      endpoints:
+        '/jira/api':
+          target: http://jira-stub.rhdh.svc.cluster.local:8080
+          headers:
+            Accept: application/json
+            Content-Type: application/json
+            X-Atlassian-Token: nocheck
+          allowedMethods: ['GET', 'POST']
+        '/quay/api':
+          target: https://quay.{{ .Values.cluster.subdomain }}
+          headers:
+            X-Requested-With: XMLHttpRequest
+          changeOrigin: true
+          secure: false
+
     kubernetes:
       serviceLocatorMethod:
         type: multiTenant
