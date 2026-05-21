@@ -286,7 +286,7 @@ data:
                     if:
                       allOf:
                         - isKind: component
-      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-scaffolder-backend-module-azure:bs_1.45.3__0.2.15'
         disabled: false
       - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
         disabled: false
