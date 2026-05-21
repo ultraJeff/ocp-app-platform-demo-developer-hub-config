@@ -92,6 +92,10 @@ data:
           target: https://github.com/evanshortiss/from-ai-hype-to-platform-reality/blob/main/catalog/catalog-info.yaml
           rules:
             - allow: [Component, System, API, Resource, Location, Template, Domain, User, Group]
+        - type: url
+          target: https://{{ .Values.gitlab.host }}/rhdh/backstage-templates/-/blob/main/catalog-info.yaml
+          rules:
+            - allow: [Location, Template]
       providers:
         keycloakOrg:
           default:
