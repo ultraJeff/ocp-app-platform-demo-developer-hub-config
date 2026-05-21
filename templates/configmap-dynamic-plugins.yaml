@@ -310,8 +310,8 @@ data:
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard-backend
         disabled: false
 
-      # Jira plugin (frontend overview card, still bundled in 1.9)
-      - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-jira
+      # Jira plugin (OCI in 1.9)
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-jira:bs_1.45.3__2.14.0'
         disabled: false
         pluginConfig:
           dynamicPlugins:
