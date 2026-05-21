@@ -28,6 +28,7 @@ spec:
         - name: oauth-client
         - name: backend-secret
         - name: backstage-orchestrator-token
+        - name: aap-credentials
     extraFiles:
       mountPath: /opt/app-root/src
     replicas: 1

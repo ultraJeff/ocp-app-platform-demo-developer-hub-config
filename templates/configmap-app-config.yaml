@@ -146,6 +146,12 @@ data:
           changeOrigin: true
           secure: false
 
+    ansible:
+      rhaap:
+        baseUrl: ${AAP_BASE_URL}
+        token: ${AAP_TOKEN}
+        checkSSL: false
+
     kubernetes:
       serviceLocatorMethod:
         type: multiTenant

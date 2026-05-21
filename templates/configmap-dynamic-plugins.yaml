@@ -299,6 +299,27 @@ data:
                     title: Image Registry
                     mountPoint: entity.page.image-registry
 
+      # Ansible plugins for AAP integration
+      - disabled: false
+        package: >-
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.1!ansible-plugin-backstage-rhaap
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              ansible.plugin-backstage-rhaap:
+                appIcons:
+                  - importName: AnsibleLogo
+                    name: AnsibleLogo
+                dynamicRoutes:
+                  - importName: AnsiblePage
+                    menuItem:
+                      icon: AnsibleLogo
+                      text: Ansible
+                    path: /ansible
+      - disabled: false
+        package: >-
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.1!ansible-plugin-scaffolder-backend-module-backstage-rhaap
+
       {{- if .Values.devMode }}
       # Dev-only plugins
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/proberaum-backstage-plugin-icon-viewer:next__0.1.2!proberaum-backstage-plugin-icon-viewer
