@@ -23,11 +23,11 @@ data:
         disabled: false
 
       # MCP Server plugins
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-mcp-actions-backend:bs_1.45.3__0.1.2!backstage-plugin-mcp-actions-backend
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-mcp-actions-backend:bs_1.45.3__0.1.5
         disabled: false
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool:bs_1.45.3__0.2.3!red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool:bs_1.45.3__0.4.1
         disabled: false
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool:bs_1.45.3__0.3.0!red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool:bs_1.45.3__0.3.2
         disabled: false
 
       # Bundled plugins (still in RHDH 1.9 image)
@@ -52,10 +52,12 @@ data:
       - package: ./dynamic-plugins/dist/backstage-community-plugin-redhat-argocd
         disabled: true
 
-      # New ArgoCD plugins (OCI, renamed in 1.9)
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-argocd-backend:bs_1.45.3__1.0.2'
+      # New ArgoCD plugins (OCI)
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-argo-cd-backend:bs_1.45.3__4.6.0'
         disabled: false
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-argocd:bs_1.45.3__2.4.3'
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-argocd:bs_1.45.3__2.4.4'
+        disabled: false
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-scaffolder-backend-argocd:bs_1.45.3__1.8.1'
         disabled: false
 
       # Tekton (unbundled in 1.9, moved to OCI)
@@ -64,7 +66,7 @@ data:
 
       # Lightspeed plugins
       - disabled: false
-        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed:bs_1.45.3__1.0.3!red-hat-developer-hub-backstage-plugin-lightspeed
+        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed:bs_1.45.3__1.2.3
         pluginConfig:
           dynamicPlugins:
             frontend:
@@ -85,7 +87,7 @@ data:
                     module: Alpha
                     ref: lightspeedTranslationRef
       - disabled: false
-        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed-backend:bs_1.45.3__1.0.3!red-hat-developer-hub-backstage-plugin-lightspeed-backend
+        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed-backend:bs_1.45.3__1.2.3
 
       # Header customisation via global header plugin
       - disabled: false
@@ -284,7 +286,7 @@ data:
         disabled: false
 
       # Scorecards plugin (frontend + backend)
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard:bs_1.45.3__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard
         disabled: false
         pluginConfig:
           dynamicPlugins:
@@ -299,7 +301,7 @@ data:
                     if:
                       allOf:
                         - isKind: component
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend:bs_1.45.3__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard-backend
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard-backend
         disabled: false
 
       # Jira plugin (frontend overview card, unbundled in 1.9)
@@ -317,7 +319,7 @@ data:
                         gridColumn: 1 / -1
 
       # Jira plugin (backend data source for Scorecards)
-      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.45.3__1.0.1!red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.42.5__1.0.1!red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira
         disabled: false
 
       # Quay plugin (unbundled in 1.9)
