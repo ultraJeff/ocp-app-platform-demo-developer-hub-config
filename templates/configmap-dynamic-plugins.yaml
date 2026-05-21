@@ -302,7 +302,7 @@ data:
       # Ansible plugins for AAP integration
       - disabled: false
         package: >-
-          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.1!ansible-plugin-backstage-rhaap
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.0!ansible-plugin-backstage-rhaap
         pluginConfig:
           dynamicPlugins:
             frontend:
@@ -318,7 +318,7 @@ data:
                     path: /ansible
       - disabled: false
         package: >-
-          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.1!ansible-plugin-scaffolder-backend-module-backstage-rhaap
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.0!ansible-plugin-scaffolder-backend-module-backstage-rhaap
 
       {{- if .Values.devMode }}
       # Dev-only plugins
