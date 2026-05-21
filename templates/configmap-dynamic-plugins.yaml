@@ -269,6 +269,8 @@ data:
                         - isKind: component
       - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
         disabled: false
+      - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+        disabled: false
 
       # Scorecards plugin (frontend + backend)
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard
