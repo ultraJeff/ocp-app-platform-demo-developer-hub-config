@@ -23,11 +23,11 @@ data:
         disabled: false
 
       # MCP Server plugins
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-mcp-actions-backend:{{inherit}}'
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-mcp-actions-backend:bs_1.45.3__0.1.2!backstage-plugin-mcp-actions-backend
         disabled: false
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool:{{inherit}}'
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool:bs_1.45.3__0.2.3!red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool
         disabled: false
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool:{{inherit}}'
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool:bs_1.45.3__0.3.0!red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool
         disabled: false
 
       # Bundled plugins (still in RHDH 1.9 image)
@@ -59,7 +59,7 @@ data:
         disabled: false
 
       # Tekton (unbundled in 1.9, moved to OCI)
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-tekton:{{inherit}}'
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-tekton:bs_1.45.3__3.33.3'
         disabled: false
 
       # Lightspeed plugins
@@ -303,7 +303,7 @@ data:
         disabled: false
 
       # Jira plugin (frontend overview card, unbundled in 1.9)
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-jira:{{inherit}}'
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-jira:bs_1.45.3__2.14.0'
         disabled: false
         pluginConfig:
           dynamicPlugins:
@@ -321,7 +321,7 @@ data:
         disabled: false
 
       # Quay plugin (unbundled in 1.9)
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-quay:{{inherit}}'
+      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-quay:bs_1.45.3__1.28.1'
         disabled: false
         pluginConfig:
           dynamicPlugins:
