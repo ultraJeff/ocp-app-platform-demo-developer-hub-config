@@ -150,6 +150,11 @@ data:
           changeOrigin: true
           secure: false
 
+    scaffolder:
+      defaultEnvironment:
+        secrets:
+          AAP_TOKEN: ${AAP_TOKEN}
+
     ansible:
       rhaap:
         baseUrl: ${AAP_BASE_URL}
