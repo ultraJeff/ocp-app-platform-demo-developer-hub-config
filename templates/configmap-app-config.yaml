@@ -75,9 +75,16 @@ data:
           - "'self'"
           - "'unsafe-eval'"
           - https://cdn.jsdelivr.net
+      reading:
+        allow:
+          - host: dev.azure.com
 
 
     integrations:
+      azure:
+        - host: dev.azure.com
+          credentials:
+            - personalAccessToken: ${AZURE_TOKEN}
       gitlab:
         - apiBaseUrl: https://{{ .Values.gitlab.host }}/api/v4
           baseUrl: https://{{ .Values.gitlab.host }}
@@ -149,6 +156,12 @@ data:
             X-Requested-With: XMLHttpRequest
           changeOrigin: true
           secure: false
+        '/azure-devops':
+          target: https://dev.azure.com
+          headers:
+            Authorization: Basic ${AZURE_TOKEN_BASE64}
+            Content-Type: application/json
+          changeOrigin: true
 
     scaffolder:
       defaultEnvironment:
