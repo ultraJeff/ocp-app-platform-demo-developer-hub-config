@@ -78,6 +78,8 @@ data:
       reading:
         allow:
           - host: dev.azure.com
+          - host: github.com
+          - host: raw.githubusercontent.com
 
 
     integrations:
@@ -103,6 +105,10 @@ data:
           target: https://{{ .Values.gitlab.host }}/rhdh/backstage-templates/-/blob/main/catalog-info.yaml
           rules:
             - allow: [Location, Template]
+        - type: url
+          target: https://github.com/ultraJeff/rhdh-ado-bootstrap/blob/main/templates/azure-devops-nodejs-app/template.yaml
+          rules:
+            - allow: [Template]
       providers:
         keycloakOrg:
           default:
