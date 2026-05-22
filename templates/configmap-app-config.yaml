@@ -106,6 +106,10 @@ data:
           rules:
             - allow: [Location, Template]
         - type: url
+          target: https://github.com/ultraJeff/rhdh-software-templates/blob/main/all.yaml
+          rules:
+            - allow: [Location, Template]
+        - type: url
           target: https://github.com/ultraJeff/rhdh-ado-bootstrap/blob/main/templates/trigger-azure-pipeline/template.yaml
           rules:
             - allow: [Template]
