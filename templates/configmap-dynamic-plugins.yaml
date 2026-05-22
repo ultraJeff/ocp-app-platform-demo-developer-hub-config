@@ -259,6 +259,7 @@ data:
                     if:
                       allOf:
                         - isKind: component
+                        - hasAnnotation: dev.azure.com/project-repo
                   - mountPoint: entity.page.pull-requests/cards
                     importName: EntityAzurePullRequestsContent
                     config:
@@ -267,6 +268,7 @@ data:
                     if:
                       allOf:
                         - isKind: component
+                        - hasAnnotation: dev.azure.com/project-repo
       - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
