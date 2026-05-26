@@ -354,6 +354,22 @@ data:
       # Adoption Insights
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights
         disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              red-hat-developer-hub.backstage-plugin-adoption-insights:
+                appIcons:
+                  - name: adoptionInsightsIcon
+                    importName: AdoptionInsightsIcon
+                dynamicRoutes:
+                  - path: /adoption-insights
+                    importName: AdoptionInsightsPage
+                    menuItem:
+                      icon: adoptionInsightsIcon
+                      text: Adoption Insights
+                menuItems:
+                  adoption-insights:
+                    parent: admin
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-analytics-module-adoption-insights-dynamic
