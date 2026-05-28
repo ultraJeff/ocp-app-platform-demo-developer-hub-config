@@ -10,6 +10,9 @@ argocd:
 kubernetes:
   apiUrl: ""
 
+sonarqube:
+  host: ""  
+
 keycloak:
   host: ""
   realm: backstage

@@ -1,4 +1,4 @@
-apiVersion: rhdh.redhat.com/v1alpha3
+apiVersion: rhdh.redhat.com/v1alpha5
 kind: Backstage
 metadata:
   name: developer-hub
@@ -28,16 +28,17 @@ spec:
         - name: oauth-client
         - name: backend-secret
         - name: backstage-orchestrator-token
+        - name: sonarqube-secret
     extraFiles:
       mountPath: /opt/app-root/src
-    replicas: 1
     route:
       enabled: true
   deployment:
     patch:
       spec:
+        replicas: 1
         template:
-          spec:
+          spec:            
             containers:
               - env:
                   - name: VALIDATION_PROVIDER
@@ -47,19 +48,20 @@ spec:
                 envFrom:
                   - secretRef:
                       name: llama-stack-secrets
-                image: 'quay.io/redhat-ai-dev/llama-stack:0.1.1'
+                  - secretRef:
+                      name: backend-secret                      
+                image: 'quay.io/redhat-ai-dev/llama-stack:0.1.4' # Llama Stack image
                 name: llama-stack
                 volumeMounts:
                   - mountPath: /app-root/.llama
                     name: shared-storage
-                  - mountPath: /app-root/embeddings_model
+                  - mountPath: /rag-content
                     name: rag-data-volume
-                    subPath: embeddings_model
-                  - mountPath: /app-root/vector_db/rhdh_product_docs
-                    name: rag-data-volume
-                    subPath: rhdh_product_docs
-              - image: 'quay.io/lightspeed-core/lightspeed-stack:dev-20251021-ee9f08f'
+              - image: 'quay.io/lightspeed-core/lightspeed-stack:0.4.0' # Lightspeed Core Service image
                 name: lightspeed-core
+                envFrom:
+                  - secretRef:
+                      name: backend-secret
                 volumeMounts:
                   - mountPath: /app-root/lightspeed-stack.yaml
                     name: lightspeed-stack
@@ -72,13 +74,13 @@ spec:
                     name: shared-storage
             initContainers:
               - name: init-rag-data
-                image: 'quay.io/redhat-ai-dev/rag-content:release-1.8-lcs'
+                image: 'quay.io/redhat-ai-dev/rag-content:release-1.9-lcs'
                 command:
                   - "sh"
                   - "-c"
-                  - "echo 'Copying RAG data...'; cp -r /rag/vector_db/rhdh_product_docs /data/ && cp -r /rag/embeddings_model /data/ && echo 'Copy complete.'"
+                  - "echo 'Copying RAG data...'; cp -r /rag/vector_db/rhdh_product_docs /rag-content/ && cp -r /rag/embeddings_model /rag-content/ && echo 'Copy complete.'"
                 volumeMounts:
-                  - mountPath: /data
+                  - mountPath: /rag-content
                     name: rag-data-volume
             volumes:
               - $patch: replace
