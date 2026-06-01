@@ -303,6 +303,37 @@ data:
       - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-sonarqube-backend:bs_1.45.3__0.15.0'
         disabled: false
                   
+      # Azure DevOps plugins
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-azure-devops-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-azure-devops
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-azure-devops:
+                mountPoints:
+                  - mountPoint: entity.page.ci/cards
+                    importName: EntityAzurePipelinesContent
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isAzureDevOpsAvailable
+                  - mountPoint: entity.page.pull-requests/cards
+                    importName: EntityAzurePullRequestsContent
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isAzureDevOpsAvailable
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+        disabled: false
+
       # Scorecards plugin (frontend + backend)
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard
         disabled: false
@@ -364,6 +395,51 @@ data:
                   - path: /image-registry
                     title: Image Registry
                     mountPoint: entity.page.image-registry
+
+      # Ansible plugins for AAP integration
+      - disabled: false
+        package: >-
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.0!ansible-plugin-backstage-rhaap
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              ansible.plugin-backstage-rhaap:
+                appIcons:
+                  - importName: AnsibleLogo
+                    name: AnsibleLogo
+                dynamicRoutes:
+                  - importName: AnsiblePage
+                    menuItem:
+                      icon: AnsibleLogo
+                      text: Ansible
+                    path: /ansible
+      - disabled: false
+        package: >-
+          oci://registry.redhat.io/ansible-automation-platform/automation-portal:2.0!ansible-plugin-scaffolder-backend-module-backstage-rhaap
+
+      # Adoption Insights
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              red-hat-developer-hub.backstage-plugin-adoption-insights:
+                appIcons:
+                  - name: adoptionInsightsIcon
+                    importName: AdoptionInsightsIcon
+                dynamicRoutes:
+                  - path: /adoption-insights
+                    importName: AdoptionInsightsPage
+                    menuItem:
+                      icon: adoptionInsightsIcon
+                      text: Adoption Insights
+                menuItems:
+                  adoption-insights:
+                    parent: admin
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-analytics-module-adoption-insights-dynamic
+        disabled: false
 
       {{- if .Values.devMode }}
       # Dev-only plugins

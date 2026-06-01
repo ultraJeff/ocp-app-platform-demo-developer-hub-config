@@ -28,6 +28,8 @@ spec:
         - name: oauth-client
         - name: backend-secret
         - name: backstage-orchestrator-token
+        - name: aap-credentials
+        - name: ado-credentials
         - name: sonarqube-secret
     extraFiles:
       mountPath: /opt/app-root/src

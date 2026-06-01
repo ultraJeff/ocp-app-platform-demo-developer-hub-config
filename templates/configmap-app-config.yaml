@@ -120,6 +120,11 @@ data:
           - "'self'"
           - "'unsafe-eval'"
           - https://cdn.jsdelivr.net
+      reading:
+        allow:
+          - host: dev.azure.com
+          - host: github.com
+          - host: raw.githubusercontent.com
 
     techdocs:
       builder: local
@@ -127,6 +132,10 @@ data:
         runIn: local
 
     integrations:
+      azure:
+        - host: dev.azure.com
+          credentials:
+            - personalAccessToken: ${AZURE_TOKEN}
       gitlab:
         - apiBaseUrl: https://{{ .Values.gitlab.host }}/api/v4
           baseUrl: https://{{ .Values.gitlab.host }}
@@ -141,6 +150,18 @@ data:
           target: https://github.com/evanshortiss/from-ai-hype-to-platform-reality/blob/main/catalog/catalog-info.yaml
           rules:
             - allow: [Component, System, API, Resource, Location, Template, Domain, User, Group]
+        - type: url
+          target: https://{{ .Values.gitlab.host }}/rhdh/backstage-templates/-/blob/main/catalog-info.yaml
+          rules:
+            - allow: [Location, Template]
+        - type: url
+          target: https://github.com/ultraJeff/rhdh-software-templates/blob/main/all.yaml
+          rules:
+            - allow: [Location, Template]
+        - type: url
+          target: https://github.com/ultraJeff/rhdh-ado-bootstrap/blob/main/templates/trigger-azure-pipeline/template.yaml
+          rules:
+            - allow: [Template]
       providers:
         keycloakOrg:
           default:
@@ -200,6 +221,23 @@ data:
             X-Requested-With: XMLHttpRequest
           changeOrigin: true
           secure: false
+        '/azure-devops':
+          target: https://dev.azure.com
+          headers:
+            Authorization: Basic ${AZURE_TOKEN_BASE64}
+            Content-Type: application/json
+          changeOrigin: true
+
+    scaffolder:
+      defaultEnvironment:
+        secrets:
+          AAP_TOKEN: ${AAP_TOKEN}
+
+    ansible:
+      rhaap:
+        baseUrl: ${AAP_BASE_URL}
+        token: ${AAP_TOKEN}
+        checkSSL: false
 
     kubernetes:
       serviceLocatorMethod:
