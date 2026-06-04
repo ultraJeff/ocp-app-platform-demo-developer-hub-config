@@ -102,6 +102,10 @@ data:
             options:
               token: ${MCP_SECRET}
               subject: mcp-clients
+          - type: static
+            options:
+              token: ${ORCHESTRATOR_TOKEN}
+              subject: orchestrator
       # Lightspeed-specific CSP and script-src/img-src directives
       csp:
         upgrade-insecure-requests: false
@@ -167,6 +171,12 @@ data:
               url: https://{{ .Values.argocd.host }}
               username: admin
               password: ${ARGOCD_PASSWORD}
+            # Alias for the orchestrator namespace-request template which
+            # references argoInstance 'cluster-argocd' rather than 'main'
+            - name: cluster-argocd
+              url: https://{{ .Values.argocd.host }}
+              username: admin
+              password: ${ARGOCD_PASSWORD}
 
     jira:
       proxyPath: /jira/api
@@ -212,6 +222,9 @@ data:
         - group: route.openshift.io
           apiVersion: v1
           plural: routes
+        - group: sonataflow.org
+          apiVersion: v1alpha08
+          plural: sonataflows
 
     sonarqube:
       baseUrl: https://{{ .Values.sonarqube.host }}
