@@ -319,6 +319,7 @@ data:
                     if:
                       allOf:
                         - isKind: component
+                        - hasAnnotation: jira/project-key
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend:bs_1.42.5__1.0.0!red-hat-developer-hub-backstage-plugin-scorecard-backend
         disabled: false
 
@@ -335,6 +336,9 @@ data:
                     config:
                       layout:
                         gridColumn: 1 / -1
+                    if:
+                      allOf:
+                        - hasAnnotation: jira/project-key
 
       # Jira plugin (backend data source for Scorecards)
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.42.5__1.0.1!red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira
