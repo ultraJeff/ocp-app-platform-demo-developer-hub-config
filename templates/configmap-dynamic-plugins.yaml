@@ -146,6 +146,9 @@ data:
                 menuItems:
                   default.create:
                     title: ''
+                  default.admin:
+                    title: Administration
+                    icon: admin
               red-hat-developer-hub.backstage-plugin-global-header:
                 mountPoints:
                   - mountPoint: application/header
