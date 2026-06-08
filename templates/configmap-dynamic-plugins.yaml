@@ -16,9 +16,30 @@ data:
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-quickstart
         disabled: true
 
-      # RBAC admin UI — no pluginConfig needed, defaults handle the sidebar registration
+      # RBAC admin UI — pluginConfig must match defaults from dynamic-plugins.default.yaml
       - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
         disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-rbac:
+                translationResources:
+                  - importName: rbacTranslations
+                    ref: rbacTranslationRef
+                    module: Alpha
+                appIcons:
+                  - name: rbacIcon
+                    importName: RbacIcon
+                dynamicRoutes:
+                  - path: /rbac
+                    importName: RbacPage
+                    menuItem:
+                      icon: rbacIcon
+                      text: RBAC
+                menuItems:
+                  rbac:
+                    parent: default.admin
+                    icon: rbacIcon
 
       # Bulk import plugins (https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.8/html/configuring_dynamic_plugins/bulk-importing-github-repositories)
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-bulk-import-backend-dynamic
@@ -452,7 +473,7 @@ data:
                       text: Adoption Insights
                 menuItems:
                   adoption-insights:
-                    parent: admin
+                    parent: default.admin
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-analytics-module-adoption-insights-dynamic
