@@ -19,6 +19,23 @@ data:
       # RBAC admin UI
       - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
         disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-rbac:
+                appIcons:
+                  - name: rbacIcon
+                    importName: RBAC
+                dynamicRoutes:
+                  - path: /rbac
+                    importName: RBACPage
+                    menuItem:
+                      icon: rbacIcon
+                      text: RBAC
+                menuItems:
+                  rbac:
+                    parent: admin
+                    icon: rbacIcon
 
       # Bulk import plugins (https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.8/html/configuring_dynamic_plugins/bulk-importing-github-repositories)
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-bulk-import-backend-dynamic
@@ -448,7 +465,8 @@ data:
                       icon: adoptionInsightsIcon
                       text: Adoption Insights
                 menuItems:
-                  adoption-insights: {}
+                  adoption-insights:
+                    parent: admin
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-analytics-module-adoption-insights-dynamic
