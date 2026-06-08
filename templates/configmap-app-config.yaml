@@ -264,6 +264,15 @@ data:
           apiVersion: v1alpha08
           plural: sonataflows
 
+    permission:
+      enabled: true
+      rbac:
+        admin:
+          superUsers:
+            - name: user:default/pe1
+        policies-csv-file: /opt/app-root/src/rbac-policy.csv
+        conditional-policies-file: /opt/app-root/src/rbac-conditional-policies.yaml
+
     sonarqube:
       baseUrl: https://{{ .Values.sonarqube.host }}
       apiKey: ${SONARQUBE_API_KEY}
