@@ -448,8 +448,7 @@ data:
                       icon: adoptionInsightsIcon
                       text: Adoption Insights
                 menuItems:
-                  adoption-insights:
-                    parent: admin
+                  adoption-insights: {}
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-adoption-insights-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-analytics-module-adoption-insights-dynamic
